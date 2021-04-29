@@ -1,0 +1,26 @@
+{
+  "autores": [
+    {
+      "nome": "Martin Fowler",
+      "dataNascimento": "1970-02-02",
+      "genero": "M",
+      "id": 1
+    }
+  ],
+  "livros": [
+    {
+      "nome": "Farinha com banana",
+      "dataLancamento": "2020-02-02",
+      "preco": 100.55,
+      "imagem": "teste",
+      "id": 2
+    },
+    {
+      "nome": "As longas tranacas de um velho careca",
+      "dataLancamento": "2019-02-02",
+      "preco": 100.55,
+      "imagem": "teste",
+      "id": 3
+    }
+  ]
+}
