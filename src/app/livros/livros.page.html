@@ -9,17 +9,43 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let livro of livros">
-      <ion-label>{{livro.nome}}</ion-label>
-      <ion-buttons>
-        <ion-button color="primary" [routerLink]="['edicao', livro.id]">
-          <ion-icon name="create" slot="icon-only"></ion-icon> 
-        </ion-button>
-        <ion-button color="primary" (click)="confirmarExclusao(livro)">
-          <ion-icon name="trash"  slot="icon-only"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-    </ion-item>
+    <ion-list-header>
+      Livros disponíveis
+    </ion-list-header>
+
+
+    <ion-item-sliding *ngFor="let livro of livros">  
+    
+      <ion-item>
+        <ion-avatar slot="start">
+          <img [src]="livro.imagem" />
+        </ion-avatar>
+
+        <ion-label>
+          <h2>{{livro.nome}}</h2>
+          <h3>Valor: 
+            <ion-text color="danger">
+              <strong>{{livro.preco | currency: 'R$ '}}</strong>
+            </ion-text>
+          </h3>        
+          <h4>Lançamento: {{livro.dataLancamento | date: 'dd/MM/yyyy' }}</h4>
+        </ion-label> 
+      </ion-item>      
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="confirmarExclusao(livro)">
+          <ion-icon name="trash" slot="icon-only"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+
+      <ion-item-options side="start">
+        <ion-item-option [routerLink]="['edicao', livro.id]">
+          <ion-icon name="pencil" slot="icon-only"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+
+  </ion-item-sliding>
+
   </ion-list>
  
   <ion-fab vertical="bottom" horizontal="end">

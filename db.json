@@ -9,18 +9,18 @@
   ],
   "livros": [
     {
-      "nome": "Farinha com banana",
-      "dataLancamento": "2020-02-02",
-      "preco": 100.55,
-      "imagem": "teste",
-      "id": 2
-    },
-    {
-      "nome": "As longas tranacas de um velho careca",
+      "nome": "As aventuras de Cidinho",
       "dataLancamento": "2019-02-02",
       "preco": 100.55,
-      "imagem": "teste",
+      "imagem": "https://i.redd.it/snuljzt6rrm51.png",
       "id": 3
+    },
+    {
+      "nome": "o homem que desafiou a gravidade",
+      "dataLancamento": "2019-02-02",
+      "preco": 100.55,
+      "imagem": "https://pbs.twimg.com/media/BRv9S7cCcAA8I54.jpg",
+      "id": 4
     }
   ]
 }
