@@ -68,7 +68,7 @@ export class AutoresCadastroComponent implements OnInit {
         .subscribe((autor) => {
           this.initializaFormulario(autor);
         });
-      }
+    }
   }
 
   initializaFormulario(autor: Autor) {

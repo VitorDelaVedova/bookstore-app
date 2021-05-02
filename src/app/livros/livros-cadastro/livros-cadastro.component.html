@@ -21,8 +21,8 @@
           <ion-input formControlName="paginas" type="number"></ion-input>
       </ion-item>
       <ion-item>
-          <ion-label>Autor:</ion-label>
-          <ion-select>
+          <ion-label position="floating">Autor:</ion-label>
+          <ion-select formControlName="autor">
             <ion-select-option value="1">Teste 1</ion-select-option>
             <ion-select-option value="2">Teste 2</ion-select-option>
           </ion-select>
@@ -33,7 +33,13 @@
       </ion-item>
       <ion-item>
           <ion-label position="floating">Imagem:</ion-label>
-          <ion-input formControlName="imagem" type="number"></ion-input>
-      </ion-item>        
+          <ion-input formControlName="imagem" type="text"></ion-input>
+      </ion-item> 
+      <ion-fab vertical="bottom"
+                 horizontal="end">
+            <ion-fab-button (click)="salvar()" [disabled]="!livrosForm.valid">
+                <ion-icon name="checkmark-outline"></ion-icon>
+            </ion-fab-button>
+        </ion-fab>       
   </form>  
 </ion-content>

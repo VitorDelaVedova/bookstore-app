@@ -9,8 +9,6 @@ import { Livro } from './livro.model';
 export class LivroService {
   
   private url = 'http://localhost:3000/livros';
- 
-  private livros: Livro[];
 
   constructor(
     private httpClient: HttpClient
@@ -20,7 +18,7 @@ export class LivroService {
     return this.httpClient.get<Livro[]>(this.url);
   }
 
-  excluir(id: number) {
+  excluir(id: number): Observable<Object> {
     return this.httpClient.delete(`${this.url}/${id}`);
   }
 
@@ -29,23 +27,18 @@ export class LivroService {
   }
 
   private adicionar(livro: Livro)  {
-    livro.id = parseInt((Math.random() * 1000).toFixed(0));
-    this.livros.push(livro);
+    return this.httpClient.post(this.url, livro);
   }
 
   private atualizar(livro: Livro) {
-    this.livros.forEach((l, i) => {
-      if(l.id === livro.id) {
-        this.livros[i] = livro;
-      } 
-    })
+    return this.httpClient.put(`${this.url}/${livro.id}`, livro);
   }
 
   salvar(livro: Livro) {
     if(livro.id) {
-      this.atualizar(livro);
+      return this.atualizar(livro);
     } else {
-      this.adicionar(livro);
+      return this.adicionar(livro);
     }
   }
 }

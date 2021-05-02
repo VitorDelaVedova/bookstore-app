@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Livro } from '../livro.model';
 import { LivroService } from '../livro.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-livros-cadastro',
@@ -14,6 +15,7 @@ export class LivrosCadastroComponent implements OnInit {
   livrosForm: FormGroup;
 
   constructor(
+    private toastController: ToastController,
     private activatedRoute: ActivatedRoute,
     private livroService: LivroService,
     private router: Router,
@@ -31,13 +33,15 @@ export class LivrosCadastroComponent implements OnInit {
   }
 
   ngOnInit() {
-    const id = parseInt(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.livroId = id;
-    this.livroService
-      .getLivro(id)
-      .subscribe((livro) => {
-         this.initializaFormulario(livro);
-      });
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    if(id !== undefined) {
+      this.livroId = parseInt(id);
+      this.livroService
+        .getLivro(this.livroId)
+        .subscribe((livro) => {
+          this.initializaFormulario(livro);
+        });
+    }
   }
 
   initializaFormulario(livro: Livro) {
@@ -50,14 +54,25 @@ export class LivrosCadastroComponent implements OnInit {
       isbn: new FormControl(livro.isbn),    
       paginas: new FormControl(livro.paginas),    
       preco: new FormControl(livro.preco),
-      imagem: new FormControl(livro.imagem)
+      imagem: new FormControl(livro.imagem),
+      autor: new FormControl(livro.autor)
     })
   }
 
   salvar() {
-    const livro = {...this.livrosForm.value, id: this.livroId}
-    this.livroService.salvar(livro);
-    this.router.navigate(['livros']);
+    const livro: Livro = {...this.livrosForm.value, id: this.livroId}
+    this.livroService.salvar(livro).subscribe(
+      () => this.router.navigate(['livros']),
+      (erro) => {
+        console.error(erro);
+        this.toastController.create({
+          message: `Não foi possível salvar o livro ${livro.titulo}`,
+          duration: 5000,
+          keyboardClose: true,
+          color: 'danger'
+        }).then(t => t.present());
+      }
+    );
   }
 
   get titulo() {

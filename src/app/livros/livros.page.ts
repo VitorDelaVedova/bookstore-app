@@ -16,7 +16,9 @@ export class LivrosPage implements OnInit {
     private alertController: AlertController,
     private toastController: ToastController,
     private livroService: LivroService
-  ) {
+  ) {}
+
+  ionViewWillEnter() {
     this.listar();
   }
 

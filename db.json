@@ -13,16 +13,24 @@
       "id": 2
     }
   ],
-
-  "livros": [ 
+  "livros": [
     {
-      "id": 1,
-      "titulo": "teste 1",
+      "titulo": "xixa bafuda",
       "isbn": 123124,
       "paginas": 5,
-      "preco": 150.00,
+      "preco": 150,
       "imagem": "https://pbs.twimg.com/media/BRv9S7cCcAA8I54.jpg",
-      "autor": 1
+      "autor": "1",
+      "id": 1
+    },
+    {
+      "titulo": "banheira do gugu",
+      "isbn": 31312,
+      "paginas": 312,
+      "preco": 3123,
+      "imagem": "https://cdn-istoe-ssl.akamaized.net/wp-content/uploads/sites/14/2019/05/solange-gomes.jpg",
+      "autor": "2",
+      "id": 2
     }
   ]
 }
