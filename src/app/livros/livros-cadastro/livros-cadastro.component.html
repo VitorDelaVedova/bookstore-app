@@ -1,45 +1,55 @@
 <ion-header>
-  <ion-toolbar color="primary">
-      <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-      <ion-title>Cadastro de livros</ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Cadastro de livros</ion-title>
+    </ion-toolbar>
 </ion-header>
 <ion-content>
-  <form [formGroup]="livrosForm">
-      <ion-item>
-          <ion-label position="floating">Titulo:</ion-label>
-          <ion-input formControlName="titulo" type="text"></ion-input>
-      </ion-item>
-      <ion-item>
-          <ion-label position="floating">ISBN:</ion-label>
-          <ion-input formControlName="isbn" type="number"></ion-input>
-      </ion-item>
-      <ion-item>
-          <ion-label position="floating">N de Páginas:</ion-label>
-          <ion-input formControlName="paginas" type="number"></ion-input>
-      </ion-item>
-      <ion-item>
-          <ion-label position="floating">Autor:</ion-label>
-          <ion-select formControlName="autor">
-            <ion-select-option value="1">Teste 1</ion-select-option>
-            <ion-select-option value="2">Teste 2</ion-select-option>
-          </ion-select>
+    <form [formGroup]="livrosForm">
+        <ion-item>
+            <ion-label position="floating">Titulo:</ion-label>
+            <ion-input formControlName="titulo" type="text"></ion-input>
+            <ion-text color="danger" *ngIf="titulo.errors">
+                <small *ngIf="titulo.errors.required && (titulo.dirty || titulo.touched)">
+                    O campo titulo é obrigatório
+                </small>
+                <small *ngIf="titulo.errors.minlength && (titulo.dirty || titulo.touched)">
+                    O campo titulo deve conter no mínimo {{titulo.errors.minlength.requiredLength}} caracteres
+                </small>
+                <small *ngIf="titulo.errors.maxlength && (titulo.dirty || titulo.touched)">
+                    O campo titulo deve conter no máximo {{titulo.errors.maxlength.requiredLength}} caracteres
+                </small>
+            </ion-text>
         </ion-item>
-      <ion-item>
-          <ion-label position="floating">Preço:</ion-label>
-          <ion-input formControlName="preco" type="number"></ion-input>
-      </ion-item>
-      <ion-item>
-          <ion-label position="floating">Imagem:</ion-label>
-          <ion-input formControlName="imagem" type="text"></ion-input>
-      </ion-item> 
-      <ion-fab vertical="bottom"
-                 horizontal="end">
+        <ion-item>
+            <ion-label position="floating">ISBN:</ion-label>
+            <ion-input formControlName="isbn" type="number"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">N de Páginas:</ion-label>
+            <ion-input formControlName="paginas" type="number"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Autor:</ion-label>
+            <ion-select formControlName="autor">
+                <ion-select-option value="1">Teste 1</ion-select-option>
+                <ion-select-option value="2">Teste 2</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Preço:</ion-label>
+            <ion-input formControlName="preco" type="number"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Imagem:</ion-label>
+            <ion-input formControlName="imagem" type="text"></ion-input>
+        </ion-item>
+        <ion-fab vertical="bottom" horizontal="end">
             <ion-fab-button (click)="salvar()" [disabled]="!livrosForm.valid">
                 <ion-icon name="checkmark-outline"></ion-icon>
             </ion-fab-button>
-        </ion-fab>       
-  </form>  
+        </ion-fab>
+    </form>
 </ion-content>

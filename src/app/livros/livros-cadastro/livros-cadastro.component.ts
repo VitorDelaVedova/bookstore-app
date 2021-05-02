@@ -51,11 +51,21 @@ export class LivrosCadastroComponent implements OnInit {
         Validators.minLength(3),
         Validators.maxLength(150),  
       ]),      
-      isbn: new FormControl(livro.isbn),    
-      paginas: new FormControl(livro.paginas),    
-      preco: new FormControl(livro.preco),
-      imagem: new FormControl(livro.imagem),
-      autor: new FormControl(livro.autor)
+      isbn: new FormControl(livro.isbn, [
+        Validators.required
+      ]),    
+      paginas: new FormControl(livro.paginas, [
+        Validators.required
+      ]),    
+      preco: new FormControl(livro.preco, [
+        Validators.required
+      ]),
+      imagem: new FormControl(livro.imagem, [
+        Validators.required
+      ]),
+      autor: new FormControl(livro.autor, [
+        Validators.required
+      ])
     })
   }
 
