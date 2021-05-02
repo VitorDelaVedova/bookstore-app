@@ -9,8 +9,6 @@ import { Autor } from './autor.model';
 export class AutorService {
   
   private url = 'http://localhost:3000/autores';
- 
-  private autores: Autor[];
 
   constructor(
     private httpClient: HttpClient
@@ -20,7 +18,7 @@ export class AutorService {
     return this.httpClient.get<Autor[]>(this.url);
   }
 
-  excluir(id: number) {
+  excluir(id: number): Observable<Object> {
     return this.httpClient.delete(`${this.url}/${id}`);
   }
 
@@ -29,23 +27,18 @@ export class AutorService {
   }
 
   private adicionar(autor: Autor)  {
-    autor.id = parseInt((Math.random() * 1000).toFixed(0));
-    this.autores.push(autor);
+    return this.httpClient.post(this.url, autor);    
   }
 
   private atualizar(autor: Autor) {
-    this.autores.forEach((a, i) => {
-      if(a.id === autor.id) {
-        this.autores[i] = autor;
-      } 
-    })
+    return this.httpClient.put(`${this.url}/${autor.id}`, autor);
   }
 
   salvar(autor: Autor) {
     if(autor.id) {
-      this.atualizar(autor);
+      return this.atualizar(autor);
     } else {
-      this.adicionar(autor);
+      return this.adicionar(autor);
     }
   }
 }

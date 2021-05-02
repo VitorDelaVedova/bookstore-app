@@ -20,10 +20,12 @@ export class LivrosCadastroComponent implements OnInit {
   ) {
     let livro = {
       id: null,
-      nome: '',
-      dataLancamento: null,
-      preco: null,
-      imagem: null      
+      titulo: null,
+      isbn: null,
+      paginas: null,
+      preco: null, 
+      imagem: null,
+      autor: null
     };
     this.initializaFormulario(livro);
   }
@@ -40,12 +42,13 @@ export class LivrosCadastroComponent implements OnInit {
 
   initializaFormulario(livro: Livro) {
     this.livrosForm = new FormGroup({
-      nome: new FormControl(livro.nome, [
+      titulo: new FormControl(livro.titulo, [
         Validators.required, 
         Validators.minLength(3),
         Validators.maxLength(150),  
       ]),      
-      dataLancamento: new FormControl(livro.dataLancamento),    
+      isbn: new FormControl(livro.isbn),    
+      paginas: new FormControl(livro.paginas),    
       preco: new FormControl(livro.preco),
       imagem: new FormControl(livro.imagem)
     })
@@ -57,7 +60,7 @@ export class LivrosCadastroComponent implements OnInit {
     this.router.navigate(['livros']);
   }
 
-  get nome() {
-    return this.livrosForm.get('nome');
+  get titulo() {
+    return this.livrosForm.get('titulo');
   }
 }

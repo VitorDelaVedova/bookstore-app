@@ -38,7 +38,7 @@ export class LivrosPage implements OnInit {
   confirmarExclusao(livro: Livro) {
     this.alertController.create({
       header: 'Confirmação de exclusão', 
-      message: `Deseja excluir o livro ${livro.nome}?`,
+      message: `Deseja excluir o livro ${livro.titulo}?`,
       buttons: [
         {
           text: 'Sim',
@@ -59,7 +59,7 @@ export class LivrosPage implements OnInit {
         (erro) => {
           console.error(erro);
           this.toastController.create({
-            message: `Não foi possível excluir o livro ${livro.nome}`,
+            message: `Não foi possível excluir o livro ${livro.titulo}`,
             duration: 5000,
             keyboardClose: true,
             color: 'danger'

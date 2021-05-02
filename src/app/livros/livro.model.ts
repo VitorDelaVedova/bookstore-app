@@ -1,9 +1,11 @@
-import { Autor } from '../autores/autor.model';
+import { Autor } from "../autores/autor.model";
 
-export interface Livro {
+export class Livro {
     id?: number;
-    nome: string;      
-    dataLancamento: Date;
-    preco: number; 
-    imagem: string;     
+    titulo: string;
+    isbn: number;
+    paginas: number;
+    preco: number;
+    imagem: string;
+    autor: Autor;
 }

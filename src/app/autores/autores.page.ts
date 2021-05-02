@@ -16,8 +16,23 @@ export class AutoresPage implements OnInit {
     private alertController: AlertController,
     private toastController: ToastController,
     private autorService: AutorService
-  ) {
+  ) { }
+
+  ionViewWillEnter() {
+    console.log('ionViewWillEnter');
     this.listar();
+  }
+
+  ionViewDidEnter() {
+    console.log('ionViewDidEnter');
+  }
+
+  ionViewWillLeave() {
+    console.log('ionViewWillLeave');
+  }
+
+  ionViewDidLeave(){
+    console.log('ionViewDidLeave');
   }
 
   ngOnInit() {}
