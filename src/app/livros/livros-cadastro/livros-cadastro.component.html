@@ -34,8 +34,7 @@
         <ion-item>
             <ion-label position="floating">Autor:</ion-label>
             <ion-select formControlName="autor">
-                <ion-select-option value="1">Teste 1</ion-select-option>
-                <ion-select-option value="2">Teste 2</ion-select-option>
+                <ion-select-option *ngFor="let autor of autores" [value]="autor">{{autor.nome}}</ion-select-option>
             </ion-select>
         </ion-item>
         <ion-item>

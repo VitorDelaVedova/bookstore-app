@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Livro } from '../livro.model';
 import { LivroService } from '../livro.service';
 import { ToastController } from '@ionic/angular';
+import { AutorService } from '../../autores/autor.service';
+import { Autor } from 'src/app/autores/autor.model';
 
 @Component({
   selector: 'app-livros-cadastro',
@@ -13,12 +15,14 @@ import { ToastController } from '@ionic/angular';
 export class LivrosCadastroComponent implements OnInit {
   livroId: number;
   livrosForm: FormGroup;
+  autores: Autor[];
 
   constructor(
     private toastController: ToastController,
     private activatedRoute: ActivatedRoute,
     private livroService: LivroService,
     private router: Router,
+    private autorService: AutorService
   ) {
     let livro = {
       id: null,
@@ -33,15 +37,16 @@ export class LivrosCadastroComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getAutores();
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     if(id !== undefined) {
       this.livroId = parseInt(id);
       this.livroService
-        .getLivro(this.livroId)
-        .subscribe((livro) => {
-          this.initializaFormulario(livro);
-        });
-    }
+      .getLivro(this.livroId)
+      .subscribe((livro) => {
+        this.initializaFormulario(livro);
+      });
+    }    
   }
 
   initializaFormulario(livro: Livro) {
@@ -87,5 +92,18 @@ export class LivrosCadastroComponent implements OnInit {
 
   get titulo() {
     return this.livrosForm.get('titulo');
+  }
+
+  getAutores() {    
+    this.autorService
+      .getAutores()
+      .subscribe(
+        (dados) => {
+          this.autores = dados;          
+        }, 
+        (erro) => {
+          console.error(erro);
+        }
+      );
   }
 }
