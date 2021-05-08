@@ -15,25 +15,25 @@
   ],
   "livros": [
     {
-      "titulo": "teste 1",
-      "isbn": 123124,
-      "paginas": 5,
-      "preco": 150,
-      "imagem": "https://pbs.twimg.com/media/BRv9S7cCcAA8I54.jpg",
+      "titulo": "Refactoring",
+      "isbn": 201485672,
+      "paginas": 464,
+      "preco": 267,
+      "imagem": "https://images-na.ssl-images-amazon.com/images/I/51k+BvsOl2L._SX392_BO1,204,203,200_.jpg",
       "autor": {
-        "nome": "David Cockford",
-        "dataNascimento": "2000-04-28T20:30:34.363-03:00",
+        "nome": "Martin Fowler",
+        "dataNascimento": "1976-02-02T00:00:00-03:00",
         "genero": "M",
-        "id": 2
+        "id": 1
       },
       "id": 1
     },
     {
-      "titulo": "banheira do gugu",
-      "isbn": 31312,
-      "paginas": 312,
-      "preco": 3123,
-      "imagem": "https://cdn-istoe-ssl.akamaized.net/wp-content/uploads/sites/14/2019/05/solange-gomes.jpg",
+      "titulo": "JavaScript: The Good Parts",
+      "isbn": 596517742,
+      "paginas": 153,
+      "preco": 152,
+      "imagem": "https://images-na.ssl-images-amazon.com/images/I/5131OWtQRaL._SX381_BO1,204,203,200_.jpg",
       "autor": {
         "nome": "David Cockford",
         "dataNascimento": "2000-04-28T20:30:34.363-03:00",

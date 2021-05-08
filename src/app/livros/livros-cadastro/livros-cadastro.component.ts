@@ -26,11 +26,11 @@ export class LivrosCadastroComponent implements OnInit {
   ) {
     let livro = {
       id: null,
-      titulo: null,
-      isbn: null,
-      paginas: null,
-      preco: null, 
-      imagem: null,
+      titulo: '',
+      isbn: 0,
+      paginas: 0,
+      preco: 0, 
+      imagem: '',
       autor: null
     };
     this.initializaFormulario(livro);
@@ -43,7 +43,7 @@ export class LivrosCadastroComponent implements OnInit {
       this.livroId = parseInt(id);
       this.livroService
       .getLivro(this.livroId)
-      .subscribe((livro) => {
+      .subscribe((livro) => {        
         this.initializaFormulario(livro);
       });
     }    
@@ -56,21 +56,11 @@ export class LivrosCadastroComponent implements OnInit {
         Validators.minLength(3),
         Validators.maxLength(150),  
       ]),      
-      isbn: new FormControl(livro.isbn, [
-        Validators.required
-      ]),    
-      paginas: new FormControl(livro.paginas, [
-        Validators.required
-      ]),    
-      preco: new FormControl(livro.preco, [
-        Validators.required
-      ]),
-      imagem: new FormControl(livro.imagem, [
-        Validators.required
-      ]),
-      autor: new FormControl(livro.autor, [
-        Validators.required
-      ])
+      isbn: new FormControl(livro.isbn, Validators.required,),    
+      paginas: new FormControl(livro.paginas, Validators.required),    
+      preco: new FormControl(livro.preco, Validators.required),
+      imagem: new FormControl(livro.imagem, Validators.required),
+      autor: new FormControl(livro.autor, Validators.required)
     })
   }
 
@@ -92,6 +82,26 @@ export class LivrosCadastroComponent implements OnInit {
 
   get titulo() {
     return this.livrosForm.get('titulo');
+  }
+
+  get isbn(){
+    return this.livrosForm.get('isbn');
+  }
+
+  get paginas(){
+    return this.livrosForm.get('paginas');
+  }
+
+  get preco(){
+    return this.livrosForm.get('preco');
+  }
+
+  get imagem(){
+    return this.livrosForm.get('imagem');
+  }
+
+  get autor(){
+    return this.livrosForm.get('autor');
   }
 
   getAutores() {    

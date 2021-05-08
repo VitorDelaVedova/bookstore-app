@@ -18,11 +18,14 @@
 
         <ion-label>
           <h2>{{livro.titulo}}</h2>
-          <h4>Autor: {{livro.autor.nome}}</h4>        
-          <h4>ISBN: {{livro.isbn}}</h4>        
-          <h4>Pag: {{livro.paginas}}</h4>
+          <h3>Autor: {{livro.autor.nome}}</h3>
+          <h3><strong>ISBN: </strong> {{livro.isbn}}</h3>
+          <h3><strong>Pág.: </strong> {{livro.paginas}}</h3>
         </ion-label> 
-        <ion-label slot="end" color="danger">{{livro.preco}}</ion-label>
+
+        <ion-label color="danger"> 
+          <h1>R$ {{livro.preco}}</h1>
+        </ion-label> 
       </ion-item>      
 
       <ion-item-options side="end">
